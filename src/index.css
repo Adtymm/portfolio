@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #121110;
+  color: #e5e2e1;
+  font-family: Inter, sans-serif;
+}
+
+::selection {
+  background: #00ff41;
+  color: #061006;
+}
+
+.grid-mask {
+  background-image:
+    linear-gradient(to right, #333 1px, transparent 1px),
+    linear-gradient(to bottom, #333 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.glass-panel {
+  background: rgba(18, 17, 16, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.stagger-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes heroReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stack-io {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.stack-io.stack-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stack-io.stack-hidden {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.98);
+}
+
+.project-title {
+  font-size: clamp(2.25rem, 7vw, 5rem);
+  line-height: 0.95;
+}
