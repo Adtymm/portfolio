@@ -39,21 +39,27 @@ export default function Hero() {
     });
 
     // 2. ANIMASI KELUAR SAAT DI-SCROLL (Menghilang per item dari atas ke bawah)
-    gsap.to(elementsToAnimate, {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        // Mulai animasi saat puncak Hero menyentuh puncak layar
-        start: "top top",
-        // Berakhir saat bagian bawah Hero menyentuh puncak layar
-        end: "bottom top",
-        scrub: 1, // Membuat animasi mengikuti pergerakan scroll
+    gsap.fromTo(elementsToAnimate,
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
       },
-      y: -100,      // Elemen bergerak naik
-      opacity: 0,   // Elemen memudar
-      scale: 0.95,  // Elemen sedikit mengecil
-      stagger: 0.1, // KUNCI: Membuat elemen menghilang satu per satu (sekuensial)
-      ease: "power1.inOut",
-    });
+      {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+        y: -100,
+        opacity: 0,
+        scale: 0.95,
+        stagger: 0.1,
+        ease: "power1.inOut",
+        immediateRender: false,
+      }
+    );
 
   }, { scope: containerRef });
 
@@ -61,11 +67,11 @@ export default function Hero() {
     <section
       ref={containerRef}
       id="home"
-      className="relative z-10 flex min-h-[90vh] w-full flex-col items-center justify-center overflow-hidden pb-16 pt-24 will-change-transform"
+      className="relative z-10 flex min-h-[90vh] w-full flex-col items-center justify-center overflow-hidden pb-12 pt-24 will-change-transform"
     >
 
 
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start px-8 text-left md:px-32 lg:px-40">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start px-8 text-left md:px-24 lg:px-40">
 
         <div className="hero-anim mb-10">
         </div>
@@ -73,13 +79,13 @@ export default function Hero() {
         <div className="hero-anim w-full">
           <h1 className="mb-8 font-anton text-6xl font-normal uppercase leading-[0.9] tracking-tighter text-white md:text-[8rem]">
             ADITYA MUHAMAD
-            <br className="hidden md:block" /> <span className="text-neon">MAULANA</span>
+            <br className="hidden md:block" /> <span className="bg-gradient-to-r from-indigo-400 to-emerald-400 bg-clip-text text-transparent">MAULANA</span>
           </h1>
         </div>
 
-        <div className="hero-anim mb-12 flex max-w-3xl border-l-2 border-neon pl-6">
+        <div className="hero-anim mb-12 flex max-w-3xl border-l-2 border-indigo-600 pl-6">
           <div>
-            <p className="mb-3 font-mono text-sm uppercase tracking-widest text-neon">// WHO I AM</p>
+            <p className="mb-3 font-mono text-sm uppercase tracking-widest text-indigo-400 ">// WHO I AM</p>
             <p className="text-xl leading-relaxed text-zinc-300">
               Informatics student who connects{" "}
               <span className="font-bold text-white">Machine Learning research, full-stack development, and UI/UX design</span>{" "}
@@ -103,7 +109,7 @@ export default function Hero() {
         <div className="hero-anim mb-24 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
           <a
             href="#projects"
-            className="inline-flex items-center justify-center rounded-md bg-neon px-8 py-4 font-bold text-black transition-colors duration-300 hover:bg-white"
+            className="inline-flex items-center justify-center rounded-md bg-indigo-600 hover:bg-indigo-500 text-white transition-colors duration-200 shadow-lg shadow-indigo-500/25 px-8 py-4 font-bold text-black transition-colors"
           >
             View My Projects
             <ArrowRight className="ml-2" size={18} />
@@ -127,7 +133,7 @@ export default function Hero() {
             <div key={label}>
               <div className="mb-2 text-4xl font-medium text-white md:text-5xl">
                 {value}
-                {suffix && <span className="text-neon">{suffix}</span>}
+                {suffix && <span className="text-indigo-400">{suffix}</span>}
               </div>
               <div className="font-mono text-xs uppercase tracking-widest text-zinc-400">{label}</div>
             </div>

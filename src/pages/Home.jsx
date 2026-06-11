@@ -55,7 +55,7 @@ export default function Home() {
           <div
             key={index}
             className={`h-1 w-1 rounded-full transition-all duration-300 ${index <= activeStep
-              ? "bg-[#00FF41] shadow-[0_0_10px_#00FF41] scale-100" // Menyala hijau neon jika terlewati
+              ? "bg-indigo-500 shadow-[0_0_10px_#00FF41] scale-100" // Menyala hijau neon jika terlewati
               : "bg-zinc-800 scale-75" // Meredup dan sedikit mengecil jika belum terlewati
               }`}
           />

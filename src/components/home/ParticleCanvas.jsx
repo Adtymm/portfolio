@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import cn from "../../lib/utils";
+import { cn } from "../../lib/utils";
 
 /**
  * ShimmeringDotsBackground — Per-dot pulse animation.
@@ -54,12 +54,12 @@ export default function ShimmeringDotsBackground({
     // ─── Resize handler ────────────────────────────────────────────
     function resize() {
       const dpr = window.devicePixelRatio || 1;
-      width  = window.innerWidth;
+      width = window.innerWidth;
       height = window.innerHeight;
 
-      canvas.width  = width  * dpr;
+      canvas.width = width * dpr;
       canvas.height = height * dpr;
-      canvas.style.width  = `${width}px`;
+      canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -81,8 +81,8 @@ export default function ShimmeringDotsBackground({
         if (dot.isBright) {
           // Bright dot: white, more opacity, soft white glow
           ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, alpha * 2.5)})`;
-          ctx.shadowBlur  = 8;
-          ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = "rgba(52, 86, 125, 0.5)";
         } else {
           // Normal dot: muted white shimmer
           ctx.fillStyle = `rgba(200, 200, 200, ${Math.max(0, alpha)})`;
@@ -105,7 +105,7 @@ export default function ShimmeringDotsBackground({
       cancelAnimationFrame(frameId);
       window.removeEventListener("resize", resize);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [spacing, bgColor]);
 
   return (

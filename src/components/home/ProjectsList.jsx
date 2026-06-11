@@ -1,90 +1,102 @@
-import { ArrowUpRight, FolderOpen } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { FolderOpen } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { projects } from "../../data/projects.js";
+import { BentoGrid } from "../ui/BentoGrid.jsx";
+import { BentoCard } from "../ui/BentoCard.jsx";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectsList() {
+  const containerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      // ── 1. Header "Selected Projects" — fade + slide up dengan scrub ──
+      gsap.from(".projects-header", {
+        scrollTrigger: {
+          trigger: ".projects-header",
+          start: "top 90%",
+          end: "top 65%",
+          scrub: 1,
+        },
+        y: 40,
+        opacity: 0,
+        ease: "power2.out",
+      });
+
+      // ── 2. Featured card (BonsaiVision) — scale + fade masuk ──
+      gsap.from(".bento-card-featured", {
+        scrollTrigger: {
+          trigger: ".bento-card-featured",
+          start: "top 90%",
+          end: "top 50%",
+          scrub: 1.2,
+        },
+        y: 70,
+        opacity: 0,
+        scale: 0.96,
+        ease: "power3.out",
+      });
+
+      // ── 3. Card biasa — stagger masuk dari bawah ──
+      const regularCards = gsap.utils.toArray(".bento-card-regular");
+
+      regularCards.forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 92%",
+            end: "top 55%",
+            scrub: 1,
+          },
+          y: 60,
+          opacity: 0,
+          scale: 0.95,
+          ease: "power2.out",
+          // Offset delay berdasarkan posisi kolom (index % 3)
+          delay: (i % 3) * 0.05,
+        });
+      });
+    },
+    { scope: containerRef }
+  );
+
   return (
-    <section id="projects" className="relative z-10 flex w-full flex-col items-center justify-center py-24 md:py-32">
+    <section
+      id="projects"
+      ref={containerRef}
+      className="relative z-10 flex w-full flex-col items-center justify-center py-18 md:py-24"
+    >
+      {/* Box Model sejajar dengan Hero dan MyStack */}
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-4 md:px-24 lg:px-40">
 
-      {/* Box Model disamakan dengan Hero dan MyStack:
-          w-full max-w-[1440px] px-8 md:px-32 lg:px-40
-      */}
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-8 md:px-32 lg:px-40">
-
-        {/* Header Title */}
-        <div className="mb-16">
-          <h3 className="mb-12 flex items-center font-mono text-sm uppercase tracking-widest text-zinc-200">
-            <FolderOpen className="mr-3 text-[#00FF41]" size={20} />
+        {/* Section Header */}
+        <div className="projects-header mb-10">
+          <h3 className="flex items-center font-mono text-sm uppercase tracking-widest text-zinc-200">
+            <FolderOpen className="mr-3 text-indigo-400/70" size={20} />
             Selected Projects
           </h3>
         </div>
 
-        {/* List Container
-          Menggunakan 'group/list' untuk mendeteksi saat seluruh area daftar di-hover 
-        */}
-        <div className="group/list relative flex flex-col border-t border-border-subtle">
-          {projects.map((project, index) => {
-            // Memformat index menjadi _01., _02., dst.
-            const formattedIndex = `_${String(index + 1).padStart(2, "0")}.`;
+        {/* Bento Grid */}
+        <BentoGrid>
+          {projects.map((project, index) => (
+            <BentoCard
+              key={project.slug}
+              project={project}
+              index={index}
+              className={
+                project.featured
+                  ? "md:col-span-2 min-h-[280px] bento-card-featured"
+                  : "md:col-span-1 min-h-[280px] bento-card-regular"
+              }
+            />
+          ))}
+        </BentoGrid>
 
-            return (
-              <Link
-                key={project.slug}
-                to={`/project/${project.slug}`}
-                // 'group/item' untuk trigger efek spesifik pada baris ini
-                // Saat list di hover, opacity semua jadi 30%, tapi yang di-hover paksa jadi 100%
-                className="group/item relative flex w-full items-start gap-4 border-b border-border-subtle py-12 transition-opacity duration-500 hover:!opacity-100 group-hover/list:opacity-30"
-              >
-                {/* Index Number */}
-                <span className="pt-2 font-mono text-zinc-300">
-                  {formattedIndex}
-                </span>
-
-                {/* Main Content */}
-                <div className="flex-grow">
-                  <div className="flex items-center gap-4">
-                    {/* Efek Premium Text Fill diterjemahkan ke Tailwind 
-                      Menggunakan background linear-gradient yang digeser posisinya
-                    */}
-                    <h4 className="whitespace-nowrap font-anton text-[40px] uppercase leading-[1.2] text-transparent md:text-[60px] bg-[linear-gradient(to_right,#00FF41_50%,white_50%)] bg-[length:200%_100%] bg-[position:100%_0] bg-clip-text transition-[background-position] duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/item:bg-[position:0%_0]">
-                      {project.name}
-                    </h4>
-
-                    {/* Animasi Ikon Panah Masuk */}
-                    <ArrowUpRight
-                      size={40}
-                      className="text-white opacity-0 -translate-x-5 transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/item:translate-x-0 group-hover/item:opacity-100"
-                    />
-                  </div>
-
-                  {/* Tech Stack List dengan Bullet Points */}
-                  <div className="mt-1 flex items-center gap-2 font-mono text-sm text-zinc-400">
-                    {project.tech.map((item, i) => (
-                      <span key={item} className="flex items-center gap-2">
-                        <span>{item}</span>
-                        {i < project.tech.length - 1 && (
-                          <span className="text-zinc-700">•</span>
-                        )}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Gambar Preview Melayang (Hanya muncul di layar besar - lg:flex)
-                  Muncul dari ukuran kecil (scale-80) ke ukuran normal (scale-100)
-                */}
-                <div className="pointer-events-none absolute -top-[50px] right-0 z-20 hidden h-[400px] w-[300px] items-center lg:flex">
-                  <img
-                    // Pastikan di data 'projects.js' Anda memiliki properti 'image'
-                    src={project.image || "/api/placeholder/300/400"}
-                    alt={project.name}
-                    className="h-full w-full scale-80 rounded-xl border border-zinc-800 object-cover opacity-0 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover/item:scale-100 group-hover/item:opacity-100"
-                  />
-                </div>
-              </Link>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

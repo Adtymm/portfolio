@@ -11,35 +11,34 @@ const stackGroups = [
   {
     title: "Frontend",
     items: [
-      { label: "JavaScript", image: "/images/javascript.png" },
-      { label: "React", image: "/images/react.png" },
-      { label: "Next.js", image: "/images/next-js.png", bg: "bg-zinc-200 p-1 rounded-md" },
-      { label: "Tailwind CSS", image: "/images/tailwind.png" },
+      { label: "JavaScript", image: "/images/logo/javascript.png" },
+      { label: "React", image: "/images/logo/react.png" },
+      { label: "Next.js", image: "/images/logo/next-js.png", bg: "bg-zinc-200 p-1 rounded-md" },
+      { label: "Tailwind CSS", image: "/images/logo/tailwind.png" },
     ],
   },
   {
     title: "Backend",
     items: [
-      { label: "Node.js", image: "/images/node.png" },
-      { label: "Express.js", image: "/images/express.png", bg: "bg-zinc-200 p-1 rounded-md" },
-      { label: "Flask", image: "/images/flask.png", bg: "bg-zinc-200 p-1 rounded-md" },
+      { label: "Node.js", image: "/images/logo/node.png" },
+      { label: "Express.js", image: "/images/logo/express.png", bg: "bg-zinc-200 p-1 rounded-md" },
+      { label: "Flask", image: "/images/logo/flask.png", bg: "bg-zinc-200 p-1 rounded-md" },
       { label: "REST API", mark: "API", color: "border border-[#00FF41] text-[#00FF41]" },
     ],
   },
   {
     title: "Database",
     items: [
-      { label: "MySQL", image: "/images/mysql.png" },
-      { label: "MongoDB", image: "/images/mongo.png" },
-      { label: "Firebase", image: "/images/firebase.png" },
+      { label: "MySQL", image: "/images/logo/mysql.png" },
+      { label: "MongoDB", image: "/images/logo/mongo.png" },
+      { label: "Firebase", image: "/images/logo/firebase.png" },
     ],
   },
   {
     title: "Tools",
     items: [
-      { label: "Git", image: "/images/git.png" },
-      { label: "Figma", image: "/images/figma.png" },
-      { label: "Vercel", mark: "V", color: "bg-white text-black" },
+      { label: "Git", image: "/images/logo/git.png" },
+      { label: "Figma", image: "/images/logo/figma.png" },
     ],
   },
 ];
@@ -101,11 +100,11 @@ export default function MyStack() {
   return (
     <section
       ref={containerRef}
-      className="relative z-10 mx-auto max-w-[1440px] border-t border-border-subtle/30 px-8 py-32 md:px-32 lg:px-40"
+      className="relative z-10 mx-auto max-w-[1440px] border-t border-border-subtle/30 px-4 py-20 md:px-32 lg:px-40"
     >
       <div className="stack-header mb-20">
-        <h3 className="flex items-center font-mono text-sm uppercase tracking-widest text-zinc-200">
-          <Asterisk className="mr-3 text-zinc-400" size={20} />
+        <h3 className="flex items-center font-mono text-lg uppercase tracking-widest text-zinc-200">
+          <Asterisk className="mr-3 text-indigo-400/70" size={30} />
           My Stack
         </h3>
       </div>

@@ -5,9 +5,17 @@ export const projects = [
     index: "_01",
     name: "BonsaiVision",
     year: "2025",
-    tech: ["Python", "VGG19", "RF-DETR", "Flask", "React"],
-    summary:
-      "A dual-model AI system that identifies bonsai species and estimates height from a single photo.",
+    tech: ["Python", "CNN (VGG19)", "RF-DETR", "Flask", "React", "Tailwind CSS"],
+    tagline:
+      "Dual-model AI system that identifies bonsai species and estimates height — built to automate what competition judges still do by hand.",
+    badge: "Solo · Tugas Akhir · Self-Initiated",
+    badgeType: "solo",
+    featured: true,
+    category: "FINAL PROJECT",
+    models: [
+      { label: "Species ID", name: "CNN · VGG19", acc: "74% acc" },
+      { label: "Height Est.", name: "RF-DETR", acc: "Roboflow" },
+    ],
   },
   {
     id: 2,
@@ -15,19 +23,29 @@ export const projects = [
     index: "_02",
     name: "Alerglow",
     year: "2024",
-    tech: ["Python", "CNN", "Flask", "Tailwind"],
-    summary:
-      "A skin disease detection web app that turned machine learning from notebook work into a product.",
+    tech: ["Python", "CNN", "Flask"],
+    tagline:
+      "Skin disease detection via CNN + Flask. My first ML model deployed to a live web app.",
+    badge: "Group · ML Developer",
+    badgeType: "group",
+    featured: false,
+    category: null,
+    models: null,
   },
   {
     id: 3,
     slug: "iaif-uin-sgd",
     index: "_03",
-    name: "Website IAIF UIN SGD",
+    name: "IAIF UIN SGD",
     year: "2024",
-    tech: ["React", "Firebase", "REST API", "Tailwind"],
-    summary:
-      "A student association platform with public pages, admin CMS, verified auth, and alumni features.",
+    tech: ["React", "Firebase", "TailwindCSS"],
+    tagline:
+      "Full redesign & rebuild of the Informatics student association platform.",
+    badge: "Internship",
+    badgeType: "intern",
+    featured: false,
+    category: null,
+    models: null,
   },
   {
     id: 4,
@@ -35,18 +53,28 @@ export const projects = [
     index: "_04",
     name: "Tidyroom",
     year: "2024",
-    tech: ["React", "Firebase", "Product Design"],
-    summary:
-      "A dorm cleaning marketplace connecting busy students with student cleaners seeking income.",
+    tech: ["React", "Firebase"],
+    tagline:
+      "Dorm cleaning marketplace connecting student workers and customers.",
+    badge: "Group · Fullstack",
+    badgeType: "group",
+    featured: false,
+    category: null,
+    models: null,
   },
   {
     id: 5,
     slug: "disperkim",
     index: "_05",
-    name: "Disperkim Redesign",
+    name: "Disperkim",
     year: "2024",
-    tech: ["Figma", "UI/UX", "Gamification"],
-    summary:
-      "A civic website redesign concept for housing assistance, reporting, education, and public engagement.",
+    tech: ["Figma", "Prototyping"],
+    tagline:
+      "Gov website redesign with gamification for civic engagement.",
+    badge: "Group · UI/UX",
+    badgeType: "group",
+    featured: false,
+    category: null,
+    models: null,
   },
 ];

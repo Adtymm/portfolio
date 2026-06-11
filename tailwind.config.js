@@ -9,6 +9,11 @@ export default {
         surface: "rgba(255,255,255,0.035)",
         "surface-hover": "rgba(255,255,255,0.07)",
         muted: "#8a8a8a",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
       },
       fontFamily: {
         anton: ["Anton", "sans-serif"],
@@ -33,6 +38,11 @@ export default {
           "50%, 100%": { transform: "translateX(110%)" },
         },
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      }
     },
   },
   plugins: [],
