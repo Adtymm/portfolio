@@ -12,6 +12,7 @@ export const projects = [
     badgeType: "solo",
     featured: true,
     category: "FINAL PROJECT",
+    github: "https://github.com/Adtymm/BonsaiFinal",
     models: [
       { label: "Species ID", name: "CNN · VGG19", acc: "74% acc" },
       { label: "Height Est.", name: "RF-DETR", acc: "Roboflow" },
@@ -30,6 +31,7 @@ export const projects = [
     badgeType: "group",
     featured: false,
     category: null,
+    github: "https://github.com/Adtymm/Alerglow",
     models: null,
   },
   {
@@ -45,6 +47,7 @@ export const projects = [
     badgeType: "intern",
     featured: false,
     category: null,
+    github: "https://github.com/Adtymm/Alumni-IAIF",
     models: null,
   },
   {
@@ -60,6 +63,7 @@ export const projects = [
     badgeType: "group",
     featured: false,
     category: null,
+    github: "https://github.com/Adtymm/Tidyroom",
     models: null,
   },
   {
@@ -75,6 +79,7 @@ export const projects = [
     badgeType: "group",
     featured: false,
     category: null,
+    github: "https://www.figma.com/design/x8bJnW87UImxbGuzw3A3SI/MPPL?node-id=0-1&p=f",
     models: null,
   },
 ];

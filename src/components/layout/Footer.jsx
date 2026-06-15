@@ -1,3 +1,6 @@
+import { Github, Linkedin, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+
 export default function Footer() {
   return (
     <footer id="contact" className="relative z-10 border-t border-border-subtle px-5 py-12 md:px-10">
@@ -8,15 +11,18 @@ export default function Footer() {
             Let&apos;s build something useful.
           </h2>
         </div>
-        <div className="flex flex-wrap gap-4 font-mono text-xs uppercase tracking-[0.16em] text-zinc-400">
-          <a className="hover:text-neon" href="mailto:hello@example.com">
-            Email
+        <div className="mt-6 flex flex-wrap gap-6 font-mono text-sm uppercase tracking-widest text-zinc-200 md:mt-0">
+          <a className="hover:text-indigo-400 flex items-center gap-2 transition-colors" href="https://wa.me/6285156545169" target="_blank" rel="noreferrer">
+            <FaWhatsapp size={18} /> WhatsApp
           </a>
-          <a className="hover:text-neon" href="https://linkedin.com" target="_blank" rel="noreferrer">
-            LinkedIn
+          <a className="hover:text-indigo-400 flex items-center gap-2 transition-colors" href="https://mail.google.com/mail/?view=cm&fs=1&to=adtyamuhamadmaulana@gmail.com" target="_blank" rel="noreferrer">
+            <Mail size={18} /> Email
           </a>
-          <a className="hover:text-neon" href="https://github.com" target="_blank" rel="noreferrer">
-            GitHub
+          <a className="hover:text-indigo-400 flex items-center gap-2 transition-colors" href="https://www.linkedin.com/in/adityammaulana/" target="_blank" rel="noreferrer">
+            <Linkedin size={18} /> LinkedIn
+          </a>
+          <a className="hover:text-indigo-400 flex items-center gap-2 transition-colors" href="https://github.com/Adtymm" target="_blank" rel="noreferrer">
+            <Github size={18} /> GitHub
           </a>
         </div>
       </div>

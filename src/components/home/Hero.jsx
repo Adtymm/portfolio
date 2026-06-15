@@ -38,28 +38,6 @@ export default function Hero() {
       delay: 0.2,
     });
 
-    // 2. ANIMASI KELUAR SAAT DI-SCROLL (Menghilang per item dari atas ke bawah)
-    gsap.fromTo(elementsToAnimate,
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-      },
-      {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-        y: -100,
-        opacity: 0,
-        scale: 0.95,
-        stagger: 0.1,
-        ease: "power1.inOut",
-        immediateRender: false,
-      }
-    );
 
   }, { scope: containerRef });
 
@@ -69,9 +47,9 @@ export default function Hero() {
       id="home"
       className="relative z-10 flex min-h-[90vh] w-full flex-col items-center justify-center overflow-hidden pb-12 pt-24 will-change-transform"
     >
+      {/* Ambient glow removed for a cleaner background */}
 
-
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start px-8 text-left md:px-24 lg:px-40">
+      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-start px-8 text-left md:px-24 lg:px-40">
 
         <div className="hero-anim mb-10">
         </div>
@@ -85,7 +63,6 @@ export default function Hero() {
 
         <div className="hero-anim mb-12 flex max-w-3xl border-l-2 border-indigo-600 pl-6">
           <div>
-            <p className="mb-3 font-mono text-sm uppercase tracking-widest text-indigo-400 ">// WHO I AM</p>
             <p className="text-xl leading-relaxed text-zinc-300">
               Informatics student who connects{" "}
               <span className="font-bold text-white">Machine Learning research, full-stack development, and UI/UX design</span>{" "}
@@ -109,13 +86,14 @@ export default function Hero() {
         <div className="hero-anim mb-24 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
           <a
             href="#projects"
-            className="inline-flex items-center justify-center rounded-md bg-indigo-600 hover:bg-indigo-500 text-white transition-colors duration-200 shadow-lg shadow-indigo-500/25 px-8 py-4 font-bold text-black transition-colors"
+            className="inline-flex items-center justify-center rounded-md bg-indigo-600 hover:bg-indigo-500 text-white transition-colors duration-200 shadow-lg shadow-indigo-500/25 px-8 py-4 font-bold"
           >
             View My Projects
             <ArrowRight className="ml-2" size={18} />
           </a>
           <a
-            href="/cv.pdf"
+            href="https://drive.google.com/file/d/1xRKceBfeFSxfKie8za8LlsdBNjbKAjWp/view?usp=sharing"
+            download="Resume_Aditya_Muhamad_Maulana.pdf"
             className="glass-panel inline-flex items-center justify-center rounded-md border border-border-subtle px-8 py-4 font-bold text-white transition-colors duration-300 hover:bg-[#2b2a2a]"
           >
             Download CV

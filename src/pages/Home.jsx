@@ -7,6 +7,7 @@ import Footer from "../components/layout/Footer.jsx";
 import Navbar from "../components/layout/Navbar.jsx";
 import Hero from "../components/home/Hero.jsx";
 import MyStack from "../components/home/MyStack.jsx";
+import Experience from "../components/home/Experience.jsx";
 import ParticleCanvas from "../components/home/ParticleCanvas.jsx";
 import ProjectsList from "../components/home/ProjectsList.jsx";
 
@@ -71,6 +72,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <MyStack />
+      <Experience />
       <ProjectsList />
       <Footer />
     </main>
